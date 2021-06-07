@@ -15,6 +15,7 @@ const Todo = () => {
     }, []);
 
     const addTodoItem = (todoValue) => {
+        console.log('...todos', [...todos], { title: todoValue, completed: false });
         setTodos([...todos, { title: todoValue, completed: false }]);
         localStorage.setItem("todos", JSON.stringify(todos))
 
@@ -79,7 +80,7 @@ const Todo = () => {
                             </div>
 
                             <hr />
-                            
+
                             <div>
                                 <p>We don't store data on server.</p>
                             </div>
