@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/penless-todo/static/css/main.7ea51e2b.chunk.css",
-    "main.js": "/penless-todo/static/js/main.e37f9fbf.chunk.js",
-    "main.js.map": "/penless-todo/static/js/main.e37f9fbf.chunk.js.map",
+    "main.js": "/penless-todo/static/js/main.c8b5baa5.chunk.js",
+    "main.js.map": "/penless-todo/static/js/main.c8b5baa5.chunk.js.map",
     "runtime-main.js": "/penless-todo/static/js/runtime-main.92d8a07f.js",
     "runtime-main.js.map": "/penless-todo/static/js/runtime-main.92d8a07f.js.map",
     "static/js/2.f0d292fa.chunk.js": "/penless-todo/static/js/2.f0d292fa.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.92d8a07f.js",
     "static/js/2.f0d292fa.chunk.js",
     "static/css/main.7ea51e2b.chunk.css",
-    "static/js/main.e37f9fbf.chunk.js"
+    "static/js/main.c8b5baa5.chunk.js"
   ]
 }
