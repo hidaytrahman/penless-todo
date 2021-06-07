@@ -5,20 +5,15 @@ import TodoList from './TodoList';
 
 
 const Todo = () => {
-    const [todos, setTodos] = useState([]);
+    
+    // get data from browser if already exists and set to initial state
+    const todosOnStorage = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
 
-    useEffect(() => {
-
-        // check from localStorage first
-        const todosOnStorage = localStorage.getItem("todos");
-        setTodos(JSON.parse(todosOnStorage));
-    }, []);
+    const [todos, setTodos] = useState([...todosOnStorage]);
 
     const addTodoItem = (todoValue) => {
-        console.log('...todos', [...todos], { title: todoValue, completed: false });
         setTodos([...todos, { title: todoValue, completed: false }]);
         localStorage.setItem("todos", JSON.stringify(todos))
-
     }
 
     const deleteTodoItem = (index) => {
@@ -39,6 +34,7 @@ const Todo = () => {
         localStorage.setItem("todos", JSON.stringify(todos))
     }
 
+    // get completed todos
     const todosCompleted = (todos && todos.length > 0) ? todos.filter((todo) => todo.completed === true) : []
 
     return (
@@ -65,17 +61,17 @@ const Todo = () => {
                             <hr />
                             <small>
                                 ( <span>List</span> <span> {todosCompleted.length} / {todos.length}</span> )
-                        </small>
+                            </small>
                             <hr />
 
-                            <div>
+                            <div className="row">
 
-                                <div>
+                                <div className="col-6">
                                     <strong>All : </strong> <Chip color="primary" label={todos.length} />
                                 </div>
 
-                                <div>
-                                    <strong>Completed : </strong> <Chip color="secondary" label={todosCompleted.length} />
+                                <div className="col-6">
+                                    <strong>Done : </strong> <Chip color="secondary" label={todosCompleted.length} />
                                 </div>
                             </div>
 
