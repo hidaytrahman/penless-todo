@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import "./Todo.css";
+import "../../theme.css";
 
 const Todo = () => {
 
@@ -45,6 +46,7 @@ const Todo = () => {
 
     return (
         <section className="container todo-wrapper">
+
             <AddTodo
                 addTodoItem={addTodoItem}
 
@@ -55,13 +57,13 @@ const Todo = () => {
 
                     {
                         todos && todos.length > 0 ?
-                        <TodoList
-                            todos={todos}
-                            deleteTodoItem={deleteTodoItem}
-                            markTodoAsCompleted={markTodoAsCompleted}
-                            editTodoItem={editTodoItem}
-                        />
-                        : <div className="alert alert-info">What are you thinking, Add your first todo? 😉</div>
+                            <TodoList
+                                todos={todos}
+                                deleteTodoItem={deleteTodoItem}
+                                markTodoAsCompleted={markTodoAsCompleted}
+                                editTodoItem={editTodoItem}
+                            />
+                            : <div className="alert alert-info">What are you thinking, Add your first todo? 😉</div>
                     }
 
                 </div>
