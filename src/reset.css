@@ -1,0 +1,16 @@
+
+.MuiButton-containedPrimary {
+    background-color: #69696b !important;
+}
+
+.MuiButton-containedPrimary:hover {
+    background-color: #353535 !important;
+}
+
+.MuiListItem-container {
+    border-bottom: 1px solid #00000017 !important;
+}
+
+.MuiList-padding {
+    padding: 0 !important;
+}

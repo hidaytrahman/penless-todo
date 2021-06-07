@@ -7,6 +7,7 @@ const TodoList = (props) => {
         <List className="todo-list-wrapper">
 
             {
+            todos && 
                 todos.map((todo, index) => {
                     return (
                         <ListItem role={undefined} dense button key={index}

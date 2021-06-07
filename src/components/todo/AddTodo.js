@@ -36,8 +36,8 @@ const AddTodo = (props) => {
                     />
                 </div>
 
-                <div className="col-4">
-                    <Button type="submit" variant="contained" fullWidth color="primary"
+                <div className="col-2">
+                    <Button type="submit" variant="contained" color="primary"
                     >Add</Button>
                 </div>
             </div>

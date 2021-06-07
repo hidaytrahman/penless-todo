@@ -1,23 +1,29 @@
 import { Chip } from '@material-ui/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 
 
 const Todo = () => {
+    const [todos, setTodos] = useState([]);
 
-    const [todos, setTodos] = useState([{
-        title: "I will create todo on painless todo app",
-        completed: true
-    }]);
+    useEffect(() => {
+
+        // check from localStorage first
+        const todosOnStorage = localStorage.getItem("todos");
+        setTodos(JSON.parse(todosOnStorage));
+    }, []);
 
     const addTodoItem = (todoValue) => {
-        setTodos([...todos, { title: todoValue, completed: false }])
+        setTodos([...todos, { title: todoValue, completed: false }]);
+        localStorage.setItem("todos", JSON.stringify(todos))
+
     }
 
     const deleteTodoItem = (index) => {
         todos.splice(index, 1);
         setTodos([...todos]);
+        localStorage.setItem("todos", JSON.stringify(todos))
     }
 
     const markTodoAsCompleted = (index, title) => {
@@ -29,12 +35,13 @@ const Todo = () => {
 
         // and setting to the main states with spread
         setTodos([...todos]);
+        localStorage.setItem("todos", JSON.stringify(todos))
     }
 
-    const todosCompleted = todos.filter((todo) => todo.completed === true)
+    const todosCompleted = (todos && todos.length > 0) ? todos.filter((todo) => todo.completed === true) : []
 
     return (
-        <section className="container">
+        <section className="container todo-wrapper">
             <AddTodo
                 addTodoItem={addTodoItem}
 
@@ -49,27 +56,38 @@ const Todo = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
-                    <section className="todo-board">
-                        <h3>Todo Board 📝</h3>
-                        <hr />
-                        <small>
-                            ( <span>List</span> <span> {todosCompleted.length} / {todos.length}</span> )
+                {
+                    todos && todos.length > 0 &&
+                    <div className="col-md-4">
+                        <section className="todo-board">
+                            <h3>Todo Board 📝</h3>
+                            <hr />
+                            <small>
+                                ( <span>List</span> <span> {todosCompleted.length} / {todos.length}</span> )
                         </small>
-                        <hr />
-
-                        <div>
+                            <hr />
 
                             <div>
-                                <strong>All : </strong> <Chip color="primary" label={todos.length} />
+
+                                <div>
+                                    <strong>All : </strong> <Chip color="primary" label={todos.length} />
+                                </div>
+
+                                <div>
+                                    <strong>Completed : </strong> <Chip color="secondary" label={todosCompleted.length} />
+                                </div>
                             </div>
 
+                            <hr />
+                            
                             <div>
-                                <strong>Completed : </strong> <Chip color="secondary" label={todosCompleted.length} />
+                                <p>We don't store data on server.</p>
                             </div>
-                        </div>
-                    </section>
-                </div>
+                        </section>
+                    </div>
+                }
+
+
 
             </div>
 
