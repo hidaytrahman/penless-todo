@@ -2,7 +2,7 @@ import { Chip } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
-
+import "./Todo.css";
 
 const Todo = () => {
 
@@ -18,6 +18,12 @@ const Todo = () => {
 
     const deleteTodoItem = (index) => {
         todos.splice(index, 1);
+        setTodos([...todos]);
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }
+
+    const editTodoItem = (index, title) => {
+        todos.splice(index, 1, { title: title, completed: false });
         setTodos([...todos]);
         localStorage.setItem("todos", JSON.stringify(todos))
     }
@@ -53,6 +59,7 @@ const Todo = () => {
                             todos={todos}
                             deleteTodoItem={deleteTodoItem}
                             markTodoAsCompleted={markTodoAsCompleted}
+                            editTodoItem={editTodoItem}
                         />
                         : <div className="alert alert-info">What are you thinking, Add your first todo? 😉</div>
                     }

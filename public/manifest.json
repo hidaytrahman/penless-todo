@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PenLess ToDo",
+  "name": "PenLess To Do",
   "icons": [
     {
       "src": "favicon.ico",
