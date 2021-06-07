@@ -22,7 +22,7 @@ footer a {
 
 
 .todo-wrapper {
-    height: 75vh;
+    min-height: 75vh;
 }
 
 .todo-board {

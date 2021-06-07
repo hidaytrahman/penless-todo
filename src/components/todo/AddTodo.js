@@ -16,7 +16,7 @@ const AddTodo = (props) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
-                <div className="col-8">
+                <div className="col-sm-8 mb-2">
                     <TextField
                         error={errors.todoTitle?.type === 'required' || errors.todoTitle?.type === 'maxLength'}
                         label="Whats needs to be done? 🤔"
@@ -36,8 +36,8 @@ const AddTodo = (props) => {
                     />
                 </div>
 
-                <div className="col-2">
-                    <Button type="submit" variant="contained" color="primary"
+                <div className="col-sm-2 mb-2">
+                    <Button type="submit" variant="contained" color="primary" fullWidth
                     >Add</Button>
                 </div>
             </div>

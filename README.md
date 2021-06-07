@@ -26,7 +26,9 @@ You will also see any lint errors in the console.
 
 
 ## Contributing
-Create an issue if you find a bug or have a suggestion or question. If you want to develop this project:
+Create an [issue](https://github.com/hidaytrahman/penless-todo/issues/new) if you find a bug or have a suggestion or question. 
+
+If you want to develop this project:
 
 - Fork it!
 - Create your feature branch: git checkout -b my-new-feature

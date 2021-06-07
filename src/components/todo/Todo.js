@@ -5,7 +5,7 @@ import TodoList from './TodoList';
 
 
 const Todo = () => {
-    
+
     // get data from browser if already exists and set to initial state
     const todosOnStorage = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
 
@@ -46,11 +46,17 @@ const Todo = () => {
 
             <div className="row">
                 <div className="col-md-8">
-                    <TodoList
-                        todos={todos}
-                        deleteTodoItem={deleteTodoItem}
-                        markTodoAsCompleted={markTodoAsCompleted}
-                    />
+
+                    {
+                        todos && todos.length > 0 ?
+                        <TodoList
+                            todos={todos}
+                            deleteTodoItem={deleteTodoItem}
+                            markTodoAsCompleted={markTodoAsCompleted}
+                        />
+                        : <div className="alert alert-info">What are you thinking, Add your first todo? 😉</div>
+                    }
+
                 </div>
 
                 {
@@ -78,7 +84,7 @@ const Todo = () => {
                             <hr />
 
                             <div>
-                                <p>We don't store data on server.</p>
+                                <p>We don't store data on server. 🙂</p>
                             </div>
                         </section>
                     </div>
