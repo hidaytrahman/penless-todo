@@ -30,6 +30,8 @@
     max-height: 63vh;
     overflow: auto;
     padding-bottom: 1rem !important;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .todo-list-wrapper li .MuiListItem-root {
@@ -44,4 +46,13 @@
 .todo-completed {
     background: rgb(199 201 201) !important;
     color: #939595 !important;
+}
+
+.custom-progressbar {
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    left: 0;
+    right: 0;
 }

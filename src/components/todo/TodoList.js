@@ -30,52 +30,55 @@ const TodoList = (props) => {
     }
 
     return (
-        <List className="todo-list-wrapper">
+        <div>
+            <List className="todo-list-wrapper">
 
-            {
-                todos &&
-                todos.map((todo, index) => {
-                    return (
-                        <ListItem role={undefined} dense button key={index}
-                            onDoubleClick={() => {
-                                setEditFormStatus(true);
-                                setSelectedListIndex(index)
-                            }}
-                            
-                            className={todo.completed && "todo-completed"}
+                {
+                    todos &&
+                    todos.map((todo, index) => {
+                        return (
+                            <ListItem role={undefined} dense button key={index}
+                                onDoubleClick={() => {
+                                    setEditFormStatus(true);
+                                    setSelectedListIndex(index)
+                                }}
+
+                                className={todo.completed && "todo-completed"}
                             >
 
-                            {
-                                editFormStatus && index === selectedListIndex &&
-                                createEditFrom()
-                            }
+                                {
+                                    editFormStatus && index === selectedListIndex &&
+                                    createEditFrom()
+                                }
 
-                            <ListItemIcon>
-                                <Radio
-                                    color="primary"
-                                    checked={todo.completed}
-                                    disabled={todo.completed}
-                                    onChange={() => markTodoAsCompleted(index, todo.title)}
-                                    value={true}
-                                    variant="secondary"
-                                    name="radio-button-demo"
-                                    inputProps={{ 'aria-label': 'A' }}
-                                />
-                            </ListItemIcon>
-                            <ListItemText style={{ textDecoration: todo.completed && "line-through" }}>{todo.title}</ListItemText>
-                            <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="comments" onClick={() => deleteTodoItem(index)}>
-                                    <DeleteSharpIcon />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                    )
-                })
-            }
+                                <ListItemIcon>
+                                    <Radio
+                                        color="primary"
+                                        checked={todo.completed}
+                                        disabled={todo.completed}
+                                        onChange={() => markTodoAsCompleted(index, todo.title)}
+                                        value={true}
+                                        variant="secondary"
+                                        name="radio-button-demo"
+                                        inputProps={{ 'aria-label': 'A' }}
+                                    />
+                                </ListItemIcon>
+                                <ListItemText style={{ textDecoration: todo.completed && "line-through" }}>{todo.title}</ListItemText>
+                                <ListItemSecondaryAction>
+                                    <IconButton edge="end" aria-label="comments" onClick={() => deleteTodoItem(index)}>
+                                        <DeleteSharpIcon />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        )
+                    })
+                }
+            </List>
 
             <small>Double click to edit</small>
+        </div>
 
-        </List>
+
     )
 }
 

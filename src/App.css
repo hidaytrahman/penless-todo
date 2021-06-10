@@ -33,7 +33,7 @@ footer a {
 
 
 .todo-wrapper {
-    min-height: 75vh;
+    min-height: 77vh;
 }
 
 .todo-board {
@@ -51,3 +51,7 @@ h3 {
     font-family: inherit;
 }
 
+small {
+    font-size: 11px;
+    color: #8b8b8b;
+}
