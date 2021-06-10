@@ -1,4 +1,15 @@
-body {}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: rgb(224, 224, 224);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #69696b;
+}
 
 header {
     background: #ffffff;
@@ -40,10 +51,3 @@ h3 {
     font-family: inherit;
 }
 
-.todo-list-wrapper li .MuiListItem-root {
-    background: #ffeb3b;
-}
-
-.smile {
-    font-size: 3rem;
-}

@@ -41,7 +41,9 @@ const TodoList = (props) => {
                                 setEditFormStatus(true);
                                 setSelectedListIndex(index)
                             }}
-                            style={{ background: todo.completed && "#c9eecb" }}>
+                            
+                            className={todo.completed && "todo-completed"}
+                            >
 
                             {
                                 editFormStatus && index === selectedListIndex &&

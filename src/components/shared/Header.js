@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const Header = () => {
     const [darkMode, setDarkMode] = useState(false);
-    
+
 
     useEffect(() => {
         const currentTheme = localStorage.getItem("theme");
@@ -32,17 +32,24 @@ const Header = () => {
     return (
         <header className="main-header">
             <div className="container">
-                <h1>🖊️Less - To Do </h1>
-                <h3>PenLess To Do gives you focus, from work to play. 😎</h3>
-                <FormGroup className="d-flex align-items-end">
+                <div className="row">
+                    <div className="col-sm-10">
+                        <h1>🖊️Less - To Do </h1>
+                        <h3>PenLess To Do gives you focus, from work to play. 😎</h3>
+                    </div>
+                    <div className="col-sm-2">
+                        <FormGroup className="d-flex align-items-end">
+                            <FormControlLabel
+                                control={<Switch checked={darkMode}
+                                    onChange={toggleChecked}
+                                />}
+                                label="Dark Mode"
+                            />
+                        </FormGroup>
+                    </div>
+                </div>
 
-                    <FormControlLabel
-                        control={<Switch checked={darkMode}
-                            onChange={toggleChecked}
-                        />}
-                        label="Dark Mode"
-                    />
-                </FormGroup>
+
 
             </div>
 
