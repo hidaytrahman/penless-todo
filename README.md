@@ -1,29 +1,32 @@
 # PainLess To-Do
+[![Visitor](https://visitor-badge.laobi.icu/badge?page_id=hidaytrahman.hidaytrahman)](https://github.com/hidaytrahman) [![GitHub followers](https://img.shields.io/github/followers/hidaytrahman.svg?style=social&label=Follow)](https://github.com/hidaytrahman?tab=followers)
 
-PenLess To Do gives you focus, from work to play. 😎
+<h2>PenLess To Do gives you focus, from work to play. 😎 </h2>
+<br/>
 
-## Available Scripts
+![PenLess Todo](landing-snap.jpg)
+__Landing View__
 
-In the project directory, you can run:
+<br/>
+<br/>
 
-### `yarn start` or `npm start`
+![PenLess Todo](landing-snap-darkmode.JPG)
+__Dark Mode__
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<div align="center">
+    <h2> Features </h2>
 
+    - Add Todo
+    - Mark as completed
+    - Update Todo
+    - Delete Todo
+    - Todo will be store in the browser
+    - Quick board about todo status
+</div>
 
-## Features
-
-- Add Todo
-- Mark as completed
-- Update Todo
-- Delete Todo
-- Todo will be store in the browser
-- Quick board about todo status
-
+<br/>
 
 ## Contributing
 Create an [issue](https://github.com/hidaytrahman/penless-todo/issues/new) if you find a bug or have a suggestion or question. 
