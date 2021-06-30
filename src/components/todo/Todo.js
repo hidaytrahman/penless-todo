@@ -80,6 +80,11 @@ const Todo = () => {
         localStorage.setItem("todos", JSON.stringify(todos))
     }
 
+    
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos])
+
 
     return (
         <section className="container todo-wrapper">
