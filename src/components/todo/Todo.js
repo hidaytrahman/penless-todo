@@ -1,48 +1,18 @@
-import { Box, Chip, CircularProgress, Typography } from '@material-ui/core';
+import { Chip } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
-import LinearProgress from '@material-ui/core/LinearProgress';
+
+import useProgress from 'hooks/useProgress';
+import { useStores } from 'store';
+
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import "./Todo.css";
 import "../../theme.css";
-import useProgress from 'hooks/useProgress';
-import { useStores } from 'store';
 
-
-function LinearProgressWithLabel(props) {
-    return (
-        <Box display="flex" alignItems="center">
-            <Box width="100%" mr={1}>
-                <LinearProgress variant="determinate" {...props} />
-            </Box>
-        </Box>
-    );
-}
-
-function CircularProgressWithLabel(props) {
-    return (
-        <Box position="relative" display="inline-flex">
-            <CircularProgress variant="determinate" {...props} />
-            <Box
-                top={0}
-                left={0}
-                bottom={0}
-                right={0}
-                position="absolute"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-            >
-                <Typography variant="caption" component="div" color="textSecondary">{`${Math.round(
-                    props.value,
-                )}%`}</Typography>
-            </Box>
-        </Box>
-    );
-}
+import { CircularProgressWithLabel, LinearProgressWithLabel } from 'components/shared/material';
 
 const Todo = () => {
-    const { todoStore, todoStore : {todos} } = useStores();
+    const { todoStore, todoStore: { todos } } = useStores();
 
     // get completed todos
     const todosCompleted = (todos && todos.length > 0) ? todos.filter((todo) => todo.completed === true) : []
@@ -80,7 +50,7 @@ const Todo = () => {
                     todos && todos.length > 0 &&
                     <div className="col-lg-4">
                         <section className="todo-board">
-                            <h3 className="d-flex"> 📝 <div style={{marginRight: "5px"}}>Todo Board</div>  <CircularProgressWithLabel color="secondary" value={progress} /></h3>
+                            <h3 className="d-flex"> 📝 <div style={{ marginRight: "5px" }}>Todo Board</div>  <CircularProgressWithLabel color="secondary" value={progress} /></h3>
 
                             <hr />
                             <small>
