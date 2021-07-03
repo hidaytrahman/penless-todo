@@ -1,4 +1,5 @@
 import { Box, Chip, CircularProgress, Typography } from '@material-ui/core';
+import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import AddTodo from './AddTodo';
@@ -6,6 +7,10 @@ import TodoList from './TodoList';
 import "./Todo.css";
 import "../../theme.css";
 import useProgress from 'hooks/useProgress';
+import { useStores } from 'store';
+
+
+
 
 function LinearProgressWithLabel(props) {
     return (
@@ -40,6 +45,8 @@ function CircularProgressWithLabel(props) {
 }
 
 const Todo = () => {
+    
+    const { todoStore } = useStores();
 
     // get data from browser if already exists and set to initial state
     const todosOnStorage = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
@@ -53,6 +60,9 @@ const Todo = () => {
 
     const addTodoItem = (todoValue) => {
         setTodos([...todos, { title: todoValue, completed: false }]);
+
+        todoStore.addTodo({ title: todoValue, completed: false });
+
         localStorage.setItem("todos", JSON.stringify(todos))
     }
 
@@ -82,12 +92,17 @@ const Todo = () => {
 
     
     useEffect(() => {
+        console.log('  noteStore  ', todoStore)
         localStorage.setItem("todos", JSON.stringify(todos))
     }, [todos])
 
 
     return (
         <section className="container todo-wrapper">
+
+            {
+                todoStore.todos.map((a) => <b>{a.title}</b>)
+            }
             <div className="custom-progressbar">
                 <LinearProgressWithLabel value={progress} color="secondary" />
             </div>
@@ -103,7 +118,6 @@ const Todo = () => {
                     {
                         todos && todos.length > 0 ?
                             <TodoList
-                                todos={todos}
                                 deleteTodoItem={deleteTodoItem}
                                 markTodoAsCompleted={markTodoAsCompleted}
                                 editTodoItem={editTodoItem}
@@ -154,4 +168,4 @@ const Todo = () => {
     )
 }
 
-export default Todo;
+export default observer(Todo);

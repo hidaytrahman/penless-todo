@@ -1,8 +1,17 @@
 import { Button, IconButton, List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Radio } from "@material-ui/core";
 import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import { useRef, useState } from "react";
+import { useStores } from "store";
+import { observer } from 'mobx-react-lite';
 const TodoList = (props) => {
-    const { todos, deleteTodoItem, markTodoAsCompleted, editTodoItem } = props;
+    
+
+    const { deleteTodoItem, markTodoAsCompleted, editTodoItem } = props;
+
+    const {todoStore} = useStores();
+
+    const {todos} = todoStore;
+
     const [editFormStatus, setEditFormStatus] = useState(false);
     const [selectedListIndex, setSelectedListIndex] = useState(0);
     const editTodoInput = useRef(null);
@@ -65,7 +74,7 @@ const TodoList = (props) => {
                                 </ListItemIcon>
                                 <ListItemText style={{ textDecoration: todo.completed && "line-through" }}>{todo.title}</ListItemText>
                                 <ListItemSecondaryAction>
-                                    <IconButton edge="end" aria-label="comments" onClick={() => deleteTodoItem(index)}>
+                                    <IconButton edge="end" aria-label="comments" onClick={() => todoStore.deleteTodo(index)}>
                                         <DeleteSharpIcon />
                                     </IconButton>
                                 </ListItemSecondaryAction>
@@ -82,4 +91,4 @@ const TodoList = (props) => {
     )
 }
 
-export default TodoList;
+export default observer(TodoList);
