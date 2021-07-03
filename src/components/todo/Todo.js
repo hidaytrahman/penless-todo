@@ -1,6 +1,5 @@
 import { Box, Chip, CircularProgress, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
-import { useEffect, useState } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
@@ -8,8 +7,6 @@ import "./Todo.css";
 import "../../theme.css";
 import useProgress from 'hooks/useProgress';
 import { useStores } from 'store';
-
-
 
 
 function LinearProgressWithLabel(props) {
@@ -45,13 +42,7 @@ function CircularProgressWithLabel(props) {
 }
 
 const Todo = () => {
-    
-    const { todoStore } = useStores();
-
-    // get data from browser if already exists and set to initial state
-    const todosOnStorage = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
-
-    const [todos, setTodos] = useState([...todosOnStorage]);
+    const { todoStore, todoStore : {todos} } = useStores();
 
     // get completed todos
     const todosCompleted = (todos && todos.length > 0) ? todos.filter((todo) => todo.completed === true) : []
@@ -59,52 +50,12 @@ const Todo = () => {
     const progress = useProgress(todosCompleted.length, todos.length)
 
     const addTodoItem = (todoValue) => {
-        setTodos([...todos, { title: todoValue, completed: false }]);
-
         todoStore.addTodo({ title: todoValue, completed: false });
-
     }
-
-    // const deleteTodoItem = (index) => {
-    //     todos.splice(index, 1);
-    //     setTodos([...todos]);
-    //     localStorage.setItem("todos", JSON.stringify(todos))
-    // }
-
-    // const editTodoItem = (index, title) => {
-    //     todos.splice(index, 1, { title: title, completed: false });
-
-    //     todoStore.addTodo({ title: title, completed: false });
-
-    //     setTodos([...todos]);
-    //     localStorage.setItem("todos", JSON.stringify(todos))
-    // }
-
-    const markTodoAsCompleted = (index, title) => {
-        // basic modification
-        todos.splice(index, 1, {
-            completed: true,
-            title
-        });
-
-        // and setting to the main states with spread
-        setTodos([...todos]);
-        localStorage.setItem("todos", JSON.stringify(todos))
-    }
-
-    
-    // useEffect(() => {
-    //     console.log('  noteStore  ', todoStore)
-    //     localStorage.setItem("todos", JSON.stringify(todos))
-    // }, [todos])
 
 
     return (
         <section className="container todo-wrapper">
-
-            {
-                todoStore.todos.map((a) => <b>{a.title}</b>)
-            }
             <div className="custom-progressbar">
                 <LinearProgressWithLabel value={progress} color="secondary" />
             </div>
@@ -119,11 +70,7 @@ const Todo = () => {
 
                     {
                         todos && todos.length > 0 ?
-                            <TodoList
-                                
-                                markTodoAsCompleted={markTodoAsCompleted}
-                            />
-
+                            <TodoList />
                             : <div className="alert alert-info">What are you thinking, Add your first todo? 😉</div>
                     }
 

@@ -1,16 +1,14 @@
 import { makeAutoObservable } from "mobx";
 
 class noteStore {
-    notes = []
 
-    constructor() {
-        
+    constructor(rootStore) {
+        this.rootStore = rootStore;
+
         makeAutoObservable(this)
     }
+    
 
-    addNote(a) {
-        this.notes.push(a)
-    }
 }
 
 export default noteStore;

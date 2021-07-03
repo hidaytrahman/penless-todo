@@ -3,7 +3,8 @@ import { makeAutoObservable } from "mobx";
 class todoStore {
     todos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
 
-    constructor() {
+    constructor(rootStore) {
+        this.rootStore = rootStore;
         makeAutoObservable(this, {}, { autoBind: true })
     }
 
@@ -19,6 +20,14 @@ class todoStore {
 
     editTodo(index, newvalue) {
         this.todos.splice(index, 1, newvalue);
+        localStorage.setItem("todos", JSON.stringify(this.todos))
+    }
+
+    markCompleted(index) {
+        this.todos.splice(index, 1, {
+            completed: true,
+            title: this.todos[index].title
+        });
         localStorage.setItem("todos", JSON.stringify(this.todos))
     }
 }

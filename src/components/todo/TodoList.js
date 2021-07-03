@@ -3,25 +3,19 @@ import DeleteSharpIcon from '@material-ui/icons/DeleteSharp';
 import { useRef, useState } from "react";
 import { useStores } from "store";
 import { observer } from 'mobx-react-lite';
-const TodoList = (props) => {
-    
 
-    const { deleteTodoItem, markTodoAsCompleted } = props;
-
+const TodoList = () => {
+    // get from store
     const {todoStore} = useStores();
-
-    const {todos} = todoStore;
+    const {todos, editTodo, markCompleted, deleteTodo} = todoStore;
 
     const [editFormStatus, setEditFormStatus] = useState(false);
     const [selectedListIndex, setSelectedListIndex] = useState(0);
     const editTodoInput = useRef(null);
 
-    const editFormSubmit = (e) => {
+    const handlerEditFormSubmit = (e) => {
         e.preventDefault();
-
-        //editTodoItem(selectedListIndex, editTodoInput.current.value);
-        todoStore.editTodo(selectedListIndex, { title: editTodoInput.current.value, completed: false });
-
+        editTodo(selectedListIndex, { title: editTodoInput.current.value, completed: false });
         setSelectedListIndex(0);
         setEditFormStatus(false);
     }
@@ -31,7 +25,7 @@ const TodoList = (props) => {
     const createEditFrom = () => {
         return (
             <div className="editFormWrapper">
-                <form onSubmit={(e) => editFormSubmit(e)}>
+                <form onSubmit={(e) => handlerEditFormSubmit(e)}>
                     <input type="text" defaultValue={todos[selectedListIndex].title} className="custom-input" ref={editTodoInput} />
                     <Button type="submit" variant="contained" color="primary"
                     >Update</Button>
@@ -67,7 +61,7 @@ const TodoList = (props) => {
                                         color="primary"
                                         checked={todo.completed}
                                         disabled={todo.completed}
-                                        onChange={() => markTodoAsCompleted(index, todo.title)}
+                                        onChange={() => markCompleted(index)}
                                         value={true}
                                         variant="secondary"
                                         name="radio-button-demo"
@@ -76,7 +70,7 @@ const TodoList = (props) => {
                                 </ListItemIcon>
                                 <ListItemText style={{ textDecoration: todo.completed && "line-through" }}>{todo.title}</ListItemText>
                                 <ListItemSecondaryAction>
-                                    <IconButton edge="end" aria-label="comments" onClick={() => todoStore.deleteTodo(index)}>
+                                    <IconButton edge="end" aria-label="comments" onClick={() => deleteTodo(index)}>
                                         <DeleteSharpIcon />
                                     </IconButton>
                                 </ListItemSecondaryAction>

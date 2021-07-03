@@ -2,12 +2,12 @@ import { Button, TextField } from "@material-ui/core";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
-const AddTodo = (props) => {
+const AddTodo = ({addTodoItem}) => {
     const refTodo = useRef(null);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        props.addTodoItem(data.todoTitle);
+        addTodoItem(data.todoTitle);
         refTodo.current.value = "";
         refTodo.current.focus();
     }
