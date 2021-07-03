@@ -1,20 +1,25 @@
 import { makeAutoObservable } from "mobx";
 
 class todoStore {
-    todos = [];
+    todos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
 
     constructor() {
-        makeAutoObservable(this)
+        makeAutoObservable(this, {}, { autoBind: true })
     }
 
     addTodo(todoData) {
         this.todos.push(todoData)
+        localStorage.setItem("todos", JSON.stringify(this.todos))
     }
 
     deleteTodo(index) {
-        //console.log('  this.todos  ' );
-        console.log('  this.todos  ', this.todos );
         this.todos = this.todos.filter((item, i) => i !== index);
+        localStorage.setItem("todos", JSON.stringify(this.todos))
+    }
+
+    editTodo(index, newvalue) {
+        this.todos.splice(index, 1, newvalue);
+        localStorage.setItem("todos", JSON.stringify(this.todos))
     }
 }
 

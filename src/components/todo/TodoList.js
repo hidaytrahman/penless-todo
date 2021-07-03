@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 const TodoList = (props) => {
     
 
-    const { deleteTodoItem, markTodoAsCompleted, editTodoItem } = props;
+    const { deleteTodoItem, markTodoAsCompleted } = props;
 
     const {todoStore} = useStores();
 
@@ -19,7 +19,9 @@ const TodoList = (props) => {
     const editFormSubmit = (e) => {
         e.preventDefault();
 
-        editTodoItem(selectedListIndex, editTodoInput.current.value);
+        //editTodoItem(selectedListIndex, editTodoInput.current.value);
+        todoStore.editTodo(selectedListIndex, { title: editTodoInput.current.value, completed: false });
+
         setSelectedListIndex(0);
         setEditFormStatus(false);
     }

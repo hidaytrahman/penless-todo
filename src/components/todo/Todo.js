@@ -63,20 +63,22 @@ const Todo = () => {
 
         todoStore.addTodo({ title: todoValue, completed: false });
 
-        localStorage.setItem("todos", JSON.stringify(todos))
     }
 
-    const deleteTodoItem = (index) => {
-        todos.splice(index, 1);
-        setTodos([...todos]);
-        localStorage.setItem("todos", JSON.stringify(todos))
-    }
+    // const deleteTodoItem = (index) => {
+    //     todos.splice(index, 1);
+    //     setTodos([...todos]);
+    //     localStorage.setItem("todos", JSON.stringify(todos))
+    // }
 
-    const editTodoItem = (index, title) => {
-        todos.splice(index, 1, { title: title, completed: false });
-        setTodos([...todos]);
-        localStorage.setItem("todos", JSON.stringify(todos))
-    }
+    // const editTodoItem = (index, title) => {
+    //     todos.splice(index, 1, { title: title, completed: false });
+
+    //     todoStore.addTodo({ title: title, completed: false });
+
+    //     setTodos([...todos]);
+    //     localStorage.setItem("todos", JSON.stringify(todos))
+    // }
 
     const markTodoAsCompleted = (index, title) => {
         // basic modification
@@ -91,10 +93,10 @@ const Todo = () => {
     }
 
     
-    useEffect(() => {
-        console.log('  noteStore  ', todoStore)
-        localStorage.setItem("todos", JSON.stringify(todos))
-    }, [todos])
+    // useEffect(() => {
+    //     console.log('  noteStore  ', todoStore)
+    //     localStorage.setItem("todos", JSON.stringify(todos))
+    // }, [todos])
 
 
     return (
@@ -118,9 +120,8 @@ const Todo = () => {
                     {
                         todos && todos.length > 0 ?
                             <TodoList
-                                deleteTodoItem={deleteTodoItem}
+                                
                                 markTodoAsCompleted={markTodoAsCompleted}
-                                editTodoItem={editTodoItem}
                             />
 
                             : <div className="alert alert-info">What are you thinking, Add your first todo? 😉</div>
@@ -159,8 +160,6 @@ const Todo = () => {
                         </section>
                     </div>
                 }
-
-
 
             </div>
 
