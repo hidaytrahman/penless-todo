@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/penless-todo/static/css/main.55d1aea6.chunk.css",
-    "main.js": "/penless-todo/static/js/main.e331965d.chunk.js",
-    "main.js.map": "/penless-todo/static/js/main.e331965d.chunk.js.map",
+    "main.css": "/penless-todo/static/css/main.343e2e33.chunk.css",
+    "main.js": "/penless-todo/static/js/main.b0a43cac.chunk.js",
+    "main.js.map": "/penless-todo/static/js/main.b0a43cac.chunk.js.map",
     "runtime-main.js": "/penless-todo/static/js/runtime-main.9bd29845.js",
     "runtime-main.js.map": "/penless-todo/static/js/runtime-main.9bd29845.js.map",
-    "static/js/2.8e3c528f.chunk.js": "/penless-todo/static/js/2.8e3c528f.chunk.js",
-    "static/js/2.8e3c528f.chunk.js.map": "/penless-todo/static/js/2.8e3c528f.chunk.js.map",
+    "static/js/2.da54d59d.chunk.js": "/penless-todo/static/js/2.da54d59d.chunk.js",
+    "static/js/2.da54d59d.chunk.js.map": "/penless-todo/static/js/2.da54d59d.chunk.js.map",
     "static/js/3.f0bcf7e8.chunk.js": "/penless-todo/static/js/3.f0bcf7e8.chunk.js",
     "static/js/3.f0bcf7e8.chunk.js.map": "/penless-todo/static/js/3.f0bcf7e8.chunk.js.map",
     "index.html": "/penless-todo/index.html",
-    "static/css/main.55d1aea6.chunk.css.map": "/penless-todo/static/css/main.55d1aea6.chunk.css.map",
-    "static/js/2.8e3c528f.chunk.js.LICENSE.txt": "/penless-todo/static/js/2.8e3c528f.chunk.js.LICENSE.txt"
+    "static/css/main.343e2e33.chunk.css.map": "/penless-todo/static/css/main.343e2e33.chunk.css.map",
+    "static/js/2.da54d59d.chunk.js.LICENSE.txt": "/penless-todo/static/js/2.da54d59d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9bd29845.js",
-    "static/js/2.8e3c528f.chunk.js",
-    "static/css/main.55d1aea6.chunk.css",
-    "static/js/main.e331965d.chunk.js"
+    "static/js/2.da54d59d.chunk.js",
+    "static/css/main.343e2e33.chunk.css",
+    "static/js/main.b0a43cac.chunk.js"
   ]
 }
