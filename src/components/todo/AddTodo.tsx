@@ -2,18 +2,19 @@ import { Button, TextField } from "@material-ui/core";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
-const AddTodo = ({ addTodoItem }) => {
-  const refTodo = useRef(null);
+const AddTodo = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
+  const refTodo = useRef<any>(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     addTodoItem(data.todoTitle);
-    refTodo.current.value = "";
-    refTodo.current.focus();
+    // @ts-ignore
+    refTodo.current?.value = "";
+    refTodo.current?.focus();
   };
 
   return (
