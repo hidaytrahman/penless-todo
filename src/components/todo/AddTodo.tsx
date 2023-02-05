@@ -1,20 +1,21 @@
 import { Button, TextField } from "@material-ui/core";
-import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
-const AddTodo = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
-  const refTodo = useRef<any>(null);
+type TodoType = {
+  todoTitle: string;
+};
 
+const AddTodo = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data: any) => {
+    reset,
+  } = useForm<TodoType>();
+
+  const onSubmit = (data: TodoType) => {
     addTodoItem(data.todoTitle);
-    // @ts-ignore
-    refTodo.current?.value = "";
-    refTodo.current?.focus();
+    reset();
   };
 
   return (
@@ -34,7 +35,6 @@ const AddTodo = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
             }
             variant="filled"
             fullWidth
-            inputRef={refTodo}
             data-testid="todo-text"
             {...register("todoTitle", {
               required: {
