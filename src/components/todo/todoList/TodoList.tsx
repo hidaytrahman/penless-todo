@@ -9,10 +9,10 @@ import {
   Radio,
 } from "@material-ui/core";
 import DeleteSharpIcon from "@material-ui/icons/DeleteSharp";
-import { FormEvent, MutableRefObject, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useStores } from "store";
 import { observer } from "mobx-react-lite";
-import { TodoType } from "./todo.types";
+import { TodoType } from "../todo.types";
 
 const TodoList = () => {
   // get from store

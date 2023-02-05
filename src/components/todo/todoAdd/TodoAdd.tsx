@@ -5,7 +5,7 @@ type TodoType = {
   todoTitle: string;
 };
 
-const AddTodo = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
+const TodoAdd = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
   const {
     register,
     handleSubmit,
@@ -62,4 +62,4 @@ const AddTodo = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
   );
 };
 
-export default AddTodo;
+export default TodoAdd;

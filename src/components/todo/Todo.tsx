@@ -4,8 +4,8 @@ import { observer } from "mobx-react-lite";
 import useProgress from "hooks/useProgress";
 import { useStores } from "store";
 
-import AddTodo from "./AddTodo";
-import TodoList from "./TodoList";
+import AddTodo from "./todoAdd/TodoAdd";
+import TodoList from "./todoList/TodoList";
 import "./Todo.css";
 import "../../theme.css";
 

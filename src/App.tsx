@@ -7,11 +7,9 @@ import "./reset.css";
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-
-      <Todo></Todo>
-
-      <Footer></Footer>
+      <Header />
+      <Todo />
+      <Footer />
     </div>
   );
 }
