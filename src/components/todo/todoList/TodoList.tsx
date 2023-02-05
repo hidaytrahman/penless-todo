@@ -9,9 +9,10 @@ import {
   Radio,
 } from "@material-ui/core";
 import DeleteSharpIcon from "@material-ui/icons/DeleteSharp";
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useStores } from "store";
 import { observer } from "mobx-react-lite";
+import { TodoType } from "../todo.types";
 
 const TodoList = () => {
   // get from store
@@ -20,12 +21,12 @@ const TodoList = () => {
 
   const [editFormStatus, setEditFormStatus] = useState(false);
   const [selectedListIndex, setSelectedListIndex] = useState(0);
-  const editTodoInput = useRef(null);
+  const editTodoInput = useRef<any>(null);
 
-  const handlerEditFormSubmit = (e) => {
+  const handlerEditFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     editTodo(selectedListIndex, {
-      title: editTodoInput.current.value,
+      title: editTodoInput.current?.value,
       completed: false,
     });
     setSelectedListIndex(0);
@@ -55,7 +56,7 @@ const TodoList = () => {
     <div>
       <List className="todo-list-wrapper">
         {todos &&
-          todos.map((todo, index) => {
+          todos.map((todo: TodoType, index: number) => {
             return (
               <ListItem
                 role="listitem"
@@ -66,6 +67,7 @@ const TodoList = () => {
                   setEditFormStatus(true);
                   setSelectedListIndex(index);
                 }}
+                // @ts-ignore
                 className={todo.completed && "todo-completed"}
                 data-testid="todo-listItem"
               >
@@ -80,12 +82,14 @@ const TodoList = () => {
                     disabled={todo.completed}
                     onChange={() => markCompleted(index)}
                     value={true}
+                    // @ts-ignore
                     variant="secondary"
                     name="radio-button-demo"
                     inputProps={{ "aria-label": "A" }}
                   />
                 </ListItemIcon>
                 <ListItemText
+                  // @ts-ignore
                   style={{ textDecoration: todo.completed && "line-through" }}
                 >
                   {todo.title}
