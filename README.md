@@ -1,17 +1,18 @@
 # PainLess To-Do
+
 [![Visitor](https://visitor-badge.laobi.icu/badge?page_id=hidaytrahman.hidaytrahman)](https://github.com/hidaytrahman) [![GitHub followers](https://img.shields.io/github/followers/hidaytrahman.svg?style=social&label=Follow)](https://github.com/hidaytrahman?tab=followers)
 
 <h2>PenLess To Do gives you focus, from work to play. 😎 </h2>
 <br/>
 
-![PenLess Todo](landing-snap.jpg)
-__Landing View__
+![PenLess Todo](landing-snap.JPG)
+**Landing View**
 
 <br/>
 <br/>
 
 ![PenLess Todo](landing-snap-darkmode.JPG)
-__Dark Mode__
+**Dark Mode**
 
 <br/>
 
@@ -24,12 +25,14 @@ __Dark Mode__
     - Delete Todo
     - Todo will be store in the browser
     - Quick board about todo status
+
 </div>
 
 <br/>
 
 ## Contributing
-Create an [issue](https://github.com/hidaytrahman/penless-todo/issues/new) if you find a bug or have a suggestion or question. 
+
+Create an [issue](https://github.com/hidaytrahman/penless-todo/issues/new) if you find a bug or have a suggestion or question.
 
 If you want to develop this project:
 
