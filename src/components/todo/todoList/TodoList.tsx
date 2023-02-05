@@ -54,7 +54,7 @@ const TodoList = () => {
 
   return (
     <div>
-      <List className="todo-list-wrapper">
+      <List className="todo-list-wrapper" data-testid="todoContainer">
         {todos &&
           todos.map((todo: TodoType, index: number) => {
             return (
@@ -69,7 +69,7 @@ const TodoList = () => {
                 }}
                 // @ts-ignore
                 className={todo.completed && "todo-completed"}
-                data-testid="todo-listItem"
+                data-testid="todoListItem"
               >
                 {editFormStatus &&
                   index === selectedListIndex &&
