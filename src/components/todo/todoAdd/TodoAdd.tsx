@@ -5,7 +5,11 @@ type TodoType = {
   todoTitle: string;
 };
 
-const TodoAdd = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
+type TodoAddProps = {
+  addTodoItem: (title: string) => void;
+};
+
+const TodoAdd = ({ addTodoItem }: TodoAddProps) => {
   const {
     register,
     handleSubmit,
@@ -35,7 +39,7 @@ const TodoAdd = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
             }
             variant="filled"
             fullWidth
-            data-testid="todo-text"
+            data-testid="todoInput"
             {...register("todoTitle", {
               required: {
                 value: true,
