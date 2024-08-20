@@ -1,4 +1,4 @@
-import { Chip } from "@material-ui/core";
+// import { Chip } from "@material-ui/core";
 import { observer } from "mobx-react-lite";
 
 import useProgress from "hooks/useProgress";
@@ -14,6 +14,7 @@ import {
   LinearProgressWithLabel,
 } from "components/shared/material";
 import { TodoType } from "./todo.types";
+import { Chip } from "@mui/material";
 
 const Todo = () => {
   const {

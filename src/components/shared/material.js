@@ -1,9 +1,11 @@
-import {
-  Box,
-  CircularProgress,
-  LinearProgress,
-  Typography,
-} from "@material-ui/core";
+// import {
+//   Box,
+//   CircularProgress,
+//   LinearProgress,
+//   Typography,
+// } from "@material-ui/core";
+
+import { Box, CircularProgress, LinearProgress, Typography } from "@mui/material";
 
 export function CircularProgressWithLabel(props) {
   return (

@@ -1,4 +1,5 @@
-import { FormControlLabel, FormGroup, Switch } from "@material-ui/core";
+// import { FormControlLabel, FormGroup, Switch } from "@material-ui/core";
+import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const Header = () => {

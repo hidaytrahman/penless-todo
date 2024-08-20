@@ -1,18 +1,20 @@
-import {
-  Button,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-  Radio,
-} from "@material-ui/core";
-import DeleteSharpIcon from "@material-ui/icons/DeleteSharp";
+// import {
+//   Button,
+//   IconButton,
+//   List,
+//   ListItem,
+//   ListItemIcon,
+//   ListItemSecondaryAction,
+//   ListItemText,
+//   Radio,
+// } from "@material-ui/core";
+// import DeleteSharpIcon from "@material-ui/icons/DeleteSharp";
 import { FormEvent, useRef, useState } from "react";
 import { useStores } from "store";
 import { observer } from "mobx-react-lite";
 import { TodoType } from "../todo.types";
+import { Button, IconButton, List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Radio } from "@mui/material";
+import { DeleteSharp } from "@mui/icons-material";
 
 const TodoList = () => {
   // get from store
@@ -61,7 +63,7 @@ const TodoList = () => {
               <ListItem
                 role="listitem"
                 dense
-                button
+                // button
                 key={index}
                 onDoubleClick={() => {
                   setEditFormStatus(true);
@@ -100,7 +102,7 @@ const TodoList = () => {
                     aria-label="comments"
                     onClick={() => deleteTodo(index)}
                   >
-                    <DeleteSharpIcon />
+                    <DeleteSharp />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
