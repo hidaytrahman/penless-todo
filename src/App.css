@@ -55,3 +55,7 @@ small {
     font-size: 11px;
     color: #8b8b8b;
 }
+
+.MuiPopover-paper {
+    background-color: var(--bkg-color) !important;
+}

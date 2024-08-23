@@ -18,7 +18,7 @@ import useAuth from 'hooks/useAuth';
 import { FormGroup, Switch } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = [];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavTop() {
@@ -147,7 +147,7 @@ function NavTop() {
             🖊️
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+           {/*  {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -156,7 +156,8 @@ function NavTop() {
                 {page}
               </Button>
             ))}
-          </Box>
+              */}
+          </Box> 
 
           <Box sx={{ flexGrow: 0 }}>
             {
@@ -180,6 +181,7 @@ function NavTop() {
                       vertical: 'top',
                       horizontal: 'right',
                     }}
+                    className='nav-container'
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
