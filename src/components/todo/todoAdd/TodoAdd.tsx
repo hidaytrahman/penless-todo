@@ -1,5 +1,6 @@
 // import { Button, TextField } from "@material-ui/core";
 import { Button, TextField } from "@mui/material";
+import useFireStore from "hooks/useFireStore";
 import { useForm } from "react-hook-form";
 
 type TodoType = {
@@ -14,8 +15,12 @@ const TodoAdd = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
     reset,
   } = useForm<TodoType>();
 
+  const {addTodoInDb} = useFireStore();
+
   const onSubmit = (data: TodoType) => {
     addTodoItem(data.todoTitle);
+    addTodoInDb( data.todoTitle);
+    
     reset();
   };
 
