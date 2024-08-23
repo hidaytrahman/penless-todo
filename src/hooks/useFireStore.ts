@@ -3,6 +3,7 @@ import { getDocs, getFirestore } from 'firebase/firestore';
 
 import { collection, addDoc } from "firebase/firestore";
 
+
 export type TodoAPIType = {
 	id: string;
 	title: string;
@@ -12,6 +13,7 @@ export type TodoAPIType = {
 export default function useFireStore() {
 	// Initialize Cloud Firestore and get a reference to the service
 	const db = getFirestore(firebaseApp);
+
 
 	// create user collection in the database - not in used
 	const addUserData = async () => {
@@ -42,20 +44,27 @@ export default function useFireStore() {
 
 	// fetch todo collection form the database
 	const fetchTodos = async () => {
-		const querySnapshot = await getDocs(collection(db, "todos"));
-		const todos:TodoAPIType[] = [];
 
-		// iterate all data in the object format for the array and transform with the expected format for frontend
-		querySnapshot.forEach((doc) => {
-		  todos.push({
-			id: doc.id,
-			...doc.data()
-		  } as TodoAPIType)
+		//  need to check auth here
+		if(true) {
+			const querySnapshot = await getDocs(collection(db, "todos"));
+			const todos:TodoAPIType[] = [];
 	
-		});
-
-		console.log({todos})
-		return todos;
+			// iterate all data in the object format for the array and transform with the expected format for frontend
+			querySnapshot.forEach((doc) => {
+			  todos.push({
+				id: doc.id,
+				...doc.data()
+			  } as TodoAPIType)
+		
+			});
+	
+			console.log({todos})
+			return todos;
+		} else {
+			console.log("You are not authorized")
+		}
+		
 	}
 
 
