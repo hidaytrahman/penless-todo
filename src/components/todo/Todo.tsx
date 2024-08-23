@@ -15,12 +15,17 @@ import {
 } from "components/shared/material";
 import { TodoType } from "./todo.types";
 import { Chip } from "@mui/material";
+import useFireStore from "hooks/useFireStore";
+import { useEffect, useMemo } from "react";
 
 const Todo = () => {
   const {
     todoStore,
-    todoStore: { todos },
+    todoStore: { todos, initializeTodo },
   } = useStores();
+
+
+  const { fetchTodos } = useFireStore();
 
   // get completed todos
   const todosCompleted =
@@ -33,6 +38,23 @@ const Todo = () => {
   const addTodoItem = (todoValue: string) => {
     todoStore.addTodo({ title: todoValue, completed: false });
   };
+
+
+  // const todosData = useMemo(async () => {
+  //   initializeTodo(await fetchTodos());
+  // }, [fetchTodos, initializeTodo])
+  // console.log({ todosData })
+  // // useEffect(() => {
+
+  // //   const getTodoList = async () => {
+  // //     const res = await fetchTodos();
+  // //     console.log({res})
+  // //     initializeTodo(res)
+  // //   }
+  // //   // const abc = fetchTodos();
+  // //   getTodoList()
+
+  // // }, [fetchTodos, initializeTodo])
 
   return (
     <section className="container todo-wrapper">
