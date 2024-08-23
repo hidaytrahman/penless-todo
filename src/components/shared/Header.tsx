@@ -1,6 +1,7 @@
 // import { FormControlLabel, FormGroup, Switch } from "@material-ui/core";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { useEffect, useState } from "react";
+import LoginWithGoogle from "./LoginWithGoogle";
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,11 +31,13 @@ const Header = () => {
     <header className="main-header">
       <div className="container">
         <div className="row">
-          <div className="col-sm-10">
+          <div className="col-sm-8">
             <h1>🖊️Less - To Do </h1>
             <h3>PenLess To Do gives you focus, from work to play. 😎</h3>
           </div>
-          <div className="col-sm-2">
+          <div className="col-sm-4">
+            <LoginWithGoogle />
+
             <FormGroup className="d-flex align-items-end">
               <FormControlLabel
                 control={<Switch checked={darkMode} onChange={toggleChecked} />}
