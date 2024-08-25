@@ -18,7 +18,7 @@ const TodoAdd = ({ addTodoItem }: { addTodoItem: (title: string) => void }) => {
   const {addTodoInDb} = useFireStore();
 
   const onSubmit = (data: TodoType) => {
-    addTodoItem(data.todoTitle);
+    // addTodoItem(data.todoTitle);
     addTodoInDb( data.todoTitle);
     
     reset();

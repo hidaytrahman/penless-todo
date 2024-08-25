@@ -1,6 +1,6 @@
 {
   "name": "penless-todo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "homepage": "http://hidaytrahman.github.io/penless-todo",
   "dependencies": {
@@ -8,6 +8,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
+    "@reduxjs/toolkit": "^2.2.7",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
@@ -15,12 +16,12 @@
     "@types/node": "^18.11.18",
     "@types/react": "^17.0.53",
     "@types/react-dom": "^18.0.10",
+    "axios": "^1.7.5",
     "firebase": "^10.13.0",
-    "mobx": "^6.3.2",
-    "mobx-react": "^7.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.8.1",
+    "react-redux": "^9.1.2",
     "react-scripts": "^5.0.1",
     "typescript": "^4.9.5"
   },

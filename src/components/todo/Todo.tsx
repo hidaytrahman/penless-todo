@@ -1,8 +1,5 @@
-// import { Chip } from "@material-ui/core";
-import { observer } from "mobx-react-lite";
 
 import useProgress from "hooks/useProgress";
-import { useStores } from "store";
 
 import AddTodo from "./todoAdd/TodoAdd";
 import TodoList from "./todoList/TodoList";
@@ -16,14 +13,13 @@ import {
 import { TodoType } from "./todo.types";
 import { Chip } from "@mui/material";
 import useFireStore from "hooks/useFireStore";
-import { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { add, initTodo } from "./todoSlice";
+import { useCallback, useEffect } from "react";
 
 const Todo = () => {
-  const {
-    todoStore,
-    todoStore: { todos, initializeTodo },
-  } = useStores();
-
+  const {todos} = useSelector((state: any) => state.todos);
+  const dispatch = useDispatch()
 
   const { fetchTodos } = useFireStore();
 
@@ -36,25 +32,21 @@ const Todo = () => {
   const progress = useProgress(todosCompleted.length, todos.length);
 
   const addTodoItem = (todoValue: string) => {
-    todoStore.addTodo({ title: todoValue, completed: false });
+    // local version
+    dispatch(add({ title: todoValue, completed: false }));
+    //db version
   };
 
+  const getTodos = useCallback(async () => {
+    const res = await fetchTodos();
+    console.log({res})
+    dispatch(initTodo(res))
+  }, [dispatch, fetchTodos])
 
-  // const todosData = useMemo(async () => {
-  //   initializeTodo(await fetchTodos());
-  // }, [fetchTodos, initializeTodo])
-  // console.log({ todosData })
-  // // useEffect(() => {
-
-  // //   const getTodoList = async () => {
-  // //     const res = await fetchTodos();
-  // //     console.log({res})
-  // //     initializeTodo(res)
-  // //   }
-  // //   // const abc = fetchTodos();
-  // //   getTodoList()
-
-  // // }, [fetchTodos, initializeTodo])
+  useEffect(() => {
+    getTodos();
+    
+  }, [])
 
   return (
     <section className="container todo-wrapper">
@@ -120,4 +112,4 @@ const Todo = () => {
   );
 };
 
-export default observer(Todo);
+export default Todo;

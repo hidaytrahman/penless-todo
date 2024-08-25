@@ -10,16 +10,16 @@
 // } from "@material-ui/core";
 // import DeleteSharpIcon from "@material-ui/icons/DeleteSharp";
 import { FormEvent, useRef, useState } from "react";
-import { useStores } from "store";
-import { observer } from "mobx-react-lite";
+
 import { TodoType } from "../todo.types";
 import { Button, IconButton, List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Radio } from "@mui/material";
 import { DeleteSharp } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
 
 const TodoList = () => {
-  // get from store
-  const { todoStore } = useStores();
-  const { todos, editTodo, markCompleted, deleteTodo } = todoStore;
+  const {todos, editTodo} = useSelector((state: any) => state.todos);
+  const dispatch = useDispatch()
+  // const { todos, editTodo, markCompleted, deleteTodo } = todoStore;
 
   const [editFormStatus, setEditFormStatus] = useState(false);
   const [selectedListIndex, setSelectedListIndex] = useState(0);
@@ -82,7 +82,7 @@ const TodoList = () => {
                     color="primary"
                     checked={todo.completed}
                     disabled={todo.completed}
-                    onChange={() => markCompleted(index)}
+                    // onChange={() => markCompleted(index)}
                     value={true}
                     // @ts-ignore
                     variant="secondary"
@@ -100,7 +100,7 @@ const TodoList = () => {
                   <IconButton
                     edge="end"
                     aria-label="comments"
-                    onClick={() => deleteTodo(index)}
+                    // onClick={() => deleteTodo(index)}
                   >
                     <DeleteSharp />
                   </IconButton>
@@ -115,4 +115,4 @@ const TodoList = () => {
   );
 };
 
-export default observer(TodoList);
+export default TodoList;

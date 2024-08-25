@@ -2,10 +2,11 @@ import { firebaseApp } from 'config/firebase.config';
 import { getDocs, getFirestore } from 'firebase/firestore';
 
 import { collection, addDoc } from "firebase/firestore";
+import useAuth from './useAuth';
 
 
 export type TodoAPIType = {
-	id: string;
+	id?: string;
 	title: string;
 	completed: boolean;
 }
@@ -14,7 +15,8 @@ export default function useFireStore() {
 	// Initialize Cloud Firestore and get a reference to the service
 	const db = getFirestore(firebaseApp);
 
-
+	const { user } = useAuth();
+	
 	// create user collection in the database - not in used
 	const addUserData = async () => {
 		try {
@@ -33,6 +35,7 @@ export default function useFireStore() {
 	const addTodoInDb = async (title: string, completed?: boolean) => {
 		try {
 			const docRef = await addDoc(collection(db, "todos"), {
+				uid: user.uid,
 				title,
 				completed: completed || false
 			});
@@ -44,9 +47,9 @@ export default function useFireStore() {
 
 	// fetch todo collection form the database
 	const fetchTodos = async () => {
-
+		console.log({user})
 		//  need to check auth here
-		if(true) {
+		if(user) {
 			const querySnapshot = await getDocs(collection(db, "todos"));
 			const todos:TodoAPIType[] = [];
 	
@@ -63,6 +66,8 @@ export default function useFireStore() {
 			return todos;
 		} else {
 			console.log("You are not authorized")
+
+			return []
 		}
 		
 	}
